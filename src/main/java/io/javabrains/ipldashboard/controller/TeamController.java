@@ -1,17 +1,18 @@
 package io.javabrains.ipldashboard.controller;
 
 import io.javabrains.ipldashboard.exception.TeamNotFoundException;
+import io.javabrains.ipldashboard.model.Match;
 import io.javabrains.ipldashboard.model.Team;
 import io.javabrains.ipldashboard.repository.MatchRepository;
 import io.javabrains.ipldashboard.repository.TeamRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/team")
+@RequestMapping("/teams")
 public class TeamController {
 
     private final TeamRepository teamRepository;
@@ -32,5 +33,12 @@ public class TeamController {
         team.setMatches(matchRepository.findLatestMatchesByTeam(teamName,4));
 
         return team;
+    }
+
+    @RequestMapping("/{teamName}/matches")
+    public List<Match> getMatchesByTeam
+            (@PathVariable("teamName")String teamName,@RequestParam int year){
+
+        return matchRepository.getMatchesByTeamAndYear(teamName,year);
     }
 }
