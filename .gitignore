@@ -19,5 +19,8 @@ target/
 *.iml
 *.ipr
 
+##maven
+.mvn/wrapper/**
+
 ### React app
 src/frontend/node_modules
