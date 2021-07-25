@@ -1,8 +1,9 @@
 
 import './App.scss';
 import {TeamPage} from "./pages/TeamPage";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {MatchPage} from "./pages/MatchPage";
+import {HomePage} from "./pages/HomePage";
 
 
 //TeamPage path is more general than upper so it takes place below
@@ -19,6 +20,10 @@ function App() {
 
                 <Route path="/teams/:teamName">
                     <TeamPage/>
+                </Route>
+
+                <Route path="/">
+                    <HomePage/>
                 </Route>
 
 

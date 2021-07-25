@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom'
 import './TeamPge.scss';
 import {PieChart} from 'react-minimal-pie-chart'
 import {Link} from 'react-router-dom'
+import back from '../back.png'
 
 export const TeamPage = () => {
 
@@ -17,7 +18,7 @@ export const TeamPage = () => {
     useEffect(() => {
             const fetchMatches = async () => {
                 //fetch returns promise
-                const response = await fetch(`http://localhost:8085/teams/${teamName}`);
+                const response = await fetch(`/teams/${teamName}`);
                 const data = await response.json();
                 console.log(data);
                 setTeam(data);
@@ -30,6 +31,7 @@ export const TeamPage = () => {
         );
 
 
+
     //fetch returned null
     if(!team || !team.teamName ){
         return <h1>Team Not Found</h1>
@@ -38,8 +40,13 @@ export const TeamPage = () => {
     return (
         <div className="TeamPage">
 
+
+
             <div className="team-name-section">
-                <h1 className="team-name"> > {team.teamName}</h1>
+                <h1 className="team-name">
+                    <Link to={"/"}> <span>{"<<"}</span>  </Link>
+
+                        {team.teamName}</h1>
             </div>
 
             <div className="win-loss-section">

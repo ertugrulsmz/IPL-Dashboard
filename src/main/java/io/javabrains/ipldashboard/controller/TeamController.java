@@ -23,6 +23,10 @@ public class TeamController {
         this.matchRepository = matchRepository;
     }
 
+    @GetMapping("")
+    public Iterable<Team> getAllTeams(){
+        return  this.teamRepository.findAll();
+    }
 
 
     @RequestMapping("/{teamName}")
@@ -41,4 +45,7 @@ public class TeamController {
 
         return matchRepository.getMatchesByTeamAndYear(teamName,year);
     }
+
+
+
 }

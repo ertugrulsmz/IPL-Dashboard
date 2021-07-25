@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom'
 import './MatchPage.scss'
 import {YearSelector} from "../components/YearSelector";
 
+
 export const MatchPage = () => {
 
     const [matches,setMatches] = useState([]);
@@ -16,7 +17,7 @@ export const MatchPage = () => {
             const fetchMatches = async () => {
                 //fetch returns promise
                 const response = await
-                    fetch(`http://localhost:8085/teams/${teamName}/matches/?year=${year}`);
+                    fetch(`/teams/${teamName}/matches/?year=${year}`);
                 const data = await response.json();
                 console.log(data);
                 setMatches(data);
@@ -39,8 +40,12 @@ export const MatchPage = () => {
             <div>
                 <h1 className={"page-heading"}>{teamName} matches in {year}</h1>
                 {
+                    matches.length > 0 ?
                     matches.map(match =>
-                        <MatchDetailCard key={match.id} teamName={teamName} match={match}/>)
+                    <MatchDetailCard key={match.id} teamName={teamName} match={match}/>)
+                        :<h3 className={"no-match-text"}>No Match is Found</h3>
+
+
                 }
             </div>
 

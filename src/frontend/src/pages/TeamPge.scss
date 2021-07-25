@@ -6,10 +6,16 @@
   grid-row-gap: 0;
 
 
+
   .team-name-section{
     grid-column: span 3;
     justify-self: start; //horizontal
     align-self: center; //verical
+
+    span{
+      color: red;
+
+    }
   }
 
   .team-name{
