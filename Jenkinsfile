@@ -24,5 +24,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Publish'){
+
+            steps{
+                bat 'mvn package'
+            }
+
+            post{
+                success{
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
     }
 }
