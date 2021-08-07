@@ -20,7 +20,7 @@ target/
 *.ipr
 
 ##maven
-.mvn/wrapper/**
+### .mvn/wrapper/**
 
 ### React app
 src/frontend/node_modules
